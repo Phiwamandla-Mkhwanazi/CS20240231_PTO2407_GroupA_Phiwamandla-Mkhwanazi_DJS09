@@ -1,6 +1,3 @@
-const reviewTotalDisplay = document.querySelector('#reviews')
-const returningUserDisplay = document.querySelector('#returning-user')
-const userNameDisplay = document.querySelector('#user')
 import { Review } from './interfaces'
 
 enum Permissions {
@@ -14,33 +11,43 @@ enum LoyaltyUser {
     BRONZE_USER = 'BRONZE_USER'
 }
 
+//Safe DOM getter
+export function getElement<T extends Element>(selector: string): T {
+    const el = document.querySelector(selector)
+    if (!el) throw new Error(`Element not found: ${selector}`)
+    return el as T
+}
+
+//Use inside functions
 export function showReviewTotal(value: number, reviewer: string, isLoyalty: LoyaltyUser) {
-    const iconDisplay = LoyaltyUser.GOLD_USER ? '⭐' : ''
-    reviewTotalDisplay.innerHTML = value.toString() + ' review' + makeMultiple(value) + ' | last reviewed by ' + reviewer + ' ' + iconDisplay    
+    const reviewTotalDisplay = getElement<HTMLElement>('#reviews')
+    const iconDisplay = isLoyalty === LoyaltyUser.GOLD_USER ? '⭐' : ''
+    reviewTotalDisplay.innerHTML = `${value} review${makeMultiple(value)} | last reviewed by ${reviewer} ${iconDisplay}`
 }
 
-export function populateUser(isReturning : boolean, userName: string ) {
-    if (isReturning == true){
-        returningUserDisplay.innerHTML = 'back'
+export function populateUser(isReturning: boolean, userName: string) {
+    const returningUserDisplay = getElement<HTMLElement>('#returning-user')
+    const userNameDisplay = getElement<HTMLElement>('#user')
+
+    if (isReturning) {
+        returningUserDisplay.textContent = 'back'
     }
-    userNameDisplay.innerHTML = userName
+
+    userNameDisplay.textContent = userName
 }
 
-export function showDetails(value: boolean | Permissions, element : HTMLDivElement, price: number) {
-    if (value) {
+export function showDetails(value: boolean | Permissions, element: HTMLDivElement, price: number) {
+    if (value === true || value === Permissions.ADMIN) {
         const priceDisplay = document.createElement('div')
-        priceDisplay.innerHTML = price.toString() + '/night'
+        priceDisplay.innerHTML = `${price}/night`
         element.appendChild(priceDisplay)
     }
 }
 
-export function makeMultiple(value: number) : string {
-    if (value > 1 || value == 0) {
-        return 's'
-    } else return ''
+export function makeMultiple(value: number): string {
+    return value !== 1 ? 's' : ''
 }
 
-export function getTopTwoReviews(reviews : Review[]) : Review[]  {
- const sortedReviews = reviews.sort((a, b) => b.stars - a.stars)
- return sortedReviews.slice(0,2)
+export function getTopTwoReviews(reviews: Review[]): Review[] {
+    return [...reviews].sort((a, b) => b.stars - a.stars).slice(0, 2)
 }
