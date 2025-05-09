@@ -48,11 +48,13 @@ const you:{
   lastName : string;
   age: number;
   isReturning: boolean;
+  stayedAt: string[];
 } = {
     firstName: 'Bobby',
     lastName: 'Brown',
     age:35,
     isReturning: true,
+    stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
 
 
