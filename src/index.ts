@@ -26,8 +26,9 @@ const reviews = [
 ];
 
 /*==========Solution===========*/
-function showReviewTotal (value : number) {
-  reviewTotalDisplay.innerHTML = value.toString(); //Error: Type number is not assignable to type 'string'
+
+function showReviewTotal (value : number, reviewer: string) {
+  reviewTotalDisplay.innerHTML = 'review total ' + value.toString() + '| last reviewed by ' + reviewer
 }
 
-showReviewTotal(reviews.length);
+showReviewTotal(reviews.length, reviews[0].name)
