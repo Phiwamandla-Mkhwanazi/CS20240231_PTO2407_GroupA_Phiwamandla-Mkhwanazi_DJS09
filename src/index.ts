@@ -1,23 +1,17 @@
-// Fixing the Website
+// Object Types Challenge
+// Based on what we discussed we need to make up our Property Objects and array,
+// can you create that array, making sure to assign the correct Types?
 
-// Can you fix my code to show 'Welcome back Bobby' in the Nav Bar for 
-// our couch surfing website? Do this by assigning types to the parameters
-// we pass to our populateUser function, so that we can be aware of
-// errors in our user objects in the future.
+import { showReviewTotal, populateUser } from './utils'
+let isOpen: boolean
 
-const returningUserDisplay = document.querySelector('#returning-user')
-const userNameDisplay = document.querySelector('#user')
-const reviewTotalDisplay = document.querySelector('#reviews')
-
-let isOpen : boolean
-
-const reviews : 
-{
-  name: string;
-  stars: number;
-  loyaltyUser: boolean;
-  date: string;
-}[] = [
+// Reviews
+const reviews : { 
+    name: string; 
+    stars: number; 
+    loyaltyUser: boolean; 
+    date: string
+    }[] = [
     {
         name: 'Sheia',
         stars: 5,
@@ -38,38 +32,52 @@ const reviews :
     },
 ]
 
-
-function showReviewTotal(value: number, reviewer: string, isLoyalty: boolean) {
-    const iconDisplay = isLoyalty ? '⭐' : ''
-    reviewTotalDisplay.innerHTML = 'review total ' + value.toString() + '| last reviewed by ' + reviewer + ' ' + iconDisplay
-}
-
-showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
-
-
-
-
-const you:{
-  firstName: string;
-  lastName : string;
-  age: number;
-  isReturning: boolean;
-  stayedAt: string[];
+// User
+const you: {
+    firstName: string;
+    lastName: string;
+    isReturning: boolean;
+    age: number;
+    stayedAt: string[]
 } = {
     firstName: 'Bobby',
     lastName: 'Brown',
-    age:35,
     isReturning: true,
+    age: 35,
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
 
 
-function populateUser(isReturning : boolean, userName : string ) {
-    if (isReturning){
-        returningUserDisplay.innerHTML = 'back'
-    }
-    userNameDisplay.innerHTML = userName
-}
+//Properties
+const properties : {
+  image: string;
+  title: string;
+  price: number;
+  location: {
+      firstLine: string;
+      city: string;
+      code: number;
+      country: string;
+  };
+  contact: string;
+  isAvailable: boolean;
+}[] = [
+  {
+      image: '',
+      title: 'Colombian Shack',
+      price: 45,
+      location: {
+          firstLine: 'shack 37',
+          city: 'Bogota',
+          code: 45632,
+          country: 'Colombia'
+      },
+      contact: 'marywinkle@gmail.com',
+      isAvailable: true  
+  }
+]
+// Functions
+showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
 populateUser(you.isReturning, you.firstName)
 
