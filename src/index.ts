@@ -1,7 +1,8 @@
-// Add the properties to the Dashboard
-// This is a continuation of the Challenge, in which you are asked to add
-// the 3 properties image and title to the dashboard based on the 
-// properties array
+// Tuple Types
+// 1. Replace the contact values to take an array that contains a
+// phone number and email.
+// 2. Check the inferred Type that appears in the Object Type.
+// 3. Overwrite the inferred type to be a Tuple.
 
 const propertyContainer = document.querySelector('.properties')
 
@@ -61,7 +62,7 @@ const properties : {
         code: number;
         country: string;
     };
-    contact: string;
+    contact: [number, string];
     isAvailable: boolean;
 }[] = [
     {
@@ -74,7 +75,7 @@ const properties : {
             code: 45632,
             country: 'Colombia'
         },
-        contact: 'marywinkle@gmail.com',
+        contact: [+1123495082908, 'marywinkle@gmail.com'],
         isAvailable: true  
     },
     {
@@ -87,7 +88,7 @@ const properties : {
             code: 343903,
             country: 'Poland'
         },
-        contact: 'garydavis@hotmail.com',
+        contact: [+1123495082908, 'garydavis@hotmail.com'],
         isAvailable: false 
     },
     {
@@ -100,17 +101,18 @@ const properties : {
             code: 35433,
             country: 'United Kingdom',
         },
-        contact: 'andyluger@aol.com',
+        contact: [ +1123495082908, 'andyluger@aol.com'],
         isAvailable: true
     }
 ]
+
 
 // Functions
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
 populateUser(you.isReturning, you.firstName)
 
-//Add the properties
+// Add the properties
 for (let i = 0; i < properties.length; i++) {
     const card = document.createElement('div')
     card.classList.add('card')
@@ -120,5 +122,4 @@ for (let i = 0; i < properties.length; i++) {
     card.appendChild(image)
     propertyContainer.appendChild(card)
 }
-
 
