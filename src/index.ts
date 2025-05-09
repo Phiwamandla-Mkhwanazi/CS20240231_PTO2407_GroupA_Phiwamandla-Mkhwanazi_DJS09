@@ -1,15 +1,8 @@
-// Wrapping up our Dashboard
-// add another property card. The Property should have:
-// 1 x picture of a 'Malaysian Hotel' called 'Malia Hotel'
-// It should cost 35/night
-// It's location should be 'Room 4, Malia , Malaysia, 45334'
-// The contact email should be 'lee34@gmail.com'
-// The phone number for the property should be +60349822083
-// It should not be available
+// Code Tidy
+
 import { showReviewTotal, populateUser, showDetails, getTopTwoReviews} from './utils'
-import { Price, Country } from './types'
 import { Permissions , LoyaltyUser } from './enums'
-import  Review  from './interfaces'
+import { Review, Property } from './interfaces'
 const propertyContainer = document.querySelector('.properties')
 const reviewContainer = document.querySelector('.reviews')
 const container = document.querySelector('.container')
@@ -17,24 +10,6 @@ const button = document.querySelector('button')
 const footer = document.querySelector('.footer')
 
 let isLoggedIn: boolean
-
-enum Permissions {
-    ADMIN = 'ADMIN', 
-    READ_ONLY = 'READ_ONLY'
-}
-
-enum LoyaltyUser {
-    GOLD_USER = 'GOLD_USER',
-    SILVER_USER = 'SILVER_USER',
-    BRONZE_USER = 'BRONZE_USER'
-}
-
-interface Review {
-    name: string; 
-    stars: number; 
-    loyaltyUser: LoyaltyUser; 
-    date: string;   
-}
 
 // Reviews
 const reviews: Review[] = [
@@ -65,20 +40,6 @@ const you = {
     isReturning: true,
     age: 35,
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
-}
-
-interface Property {
-    image: string;
-    title: string;
-    price: Price;
-    location: {
-        firstLine: string;
-        city: string;
-        code: number | string;
-        country: Country
-    }
-    contact: [ number, string];
-    isAvailable: boolean;
 }
 
 // Array of Properties
@@ -171,7 +132,7 @@ function addReviews(array : Review[]) : void {
 
 button.addEventListener('click', () => addReviews(reviews))
 
-let currentLocation : [string, string, number] = ['Johannesburg', '19.30', 19]
+let currentLocation : [string, string, number] = ['London', '11.03', 17]
 footer.innerHTML = currentLocation[0] + ' ' + currentLocation[1] + ' ' + currentLocation[2] + '°'
 
 // Classes
