@@ -11,7 +11,13 @@ const reviewTotalDisplay = document.querySelector('#reviews')
 
 let isOpen : boolean
 
-const reviews = [
+const reviews : 
+{
+  name: string;
+  stars: number;
+  loyaltyUser: boolean;
+  date: string;
+}[] = [
     {
         name: 'Sheia',
         stars: 5,
