@@ -1,6 +1,6 @@
 import { showReviewTotal, populateUser, showDetails } from './utils'
-import { Permissions , LoyaltyUser } from './enums'
 import { Price, Country } from './types'
+import { Permissions , LoyaltyUser } from './enums'
 const propertyContainer = document.querySelector('.properties')
 const footer = document.querySelector('.footer')
 
@@ -47,7 +47,7 @@ const properties : {
         firstLine: string;
         city: string;
         code: number;
-        country: Country;
+        country: string;
     };
     contact: [ number, string ];
     isAvailable: boolean;
