@@ -27,7 +27,7 @@ body {
   height: 30px;
   width: 46px;
   background-size: 47px;
-  background-image: url('images/sofa-logo.png');
+  background-image: url('../images/sofa-logo.png');
   margin: 20px;
 }
 
@@ -46,4 +46,14 @@ body {
   border-radius: 20px;
   padding: 10px;
   box-shadow: rgb(0 0 0 / 12%) 0 1px 8px;
+}
+
+.footer {
+  width: 100%;
+  background-color: lightcoral;
+  position:absolute;
+  bottom:0;
+  text-align: center;
+  padding: 30px;
+  color: white;
 }

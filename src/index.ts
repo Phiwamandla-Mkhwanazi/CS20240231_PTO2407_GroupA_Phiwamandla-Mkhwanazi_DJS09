@@ -1,10 +1,12 @@
-// Tuple Types
-// 1. Replace the contact values to take an array that contains a
-// phone number and email.
-// 2. Check the inferred Type that appears in the Object Type.
-// 3. Overwrite the inferred type to be a Tuple.
+// Tuples challenge
+// 1. Add an array to the variable of currentLocation I have added. This array
+// must have your current location, time, and degrees celcius of your location
+// NOTE: make sure to make this a Tuple, to only allow those types in that
+// structure.
+// 2. Add this visually to a footer on your site
 
 const propertyContainer = document.querySelector('.properties')
+const footer = document.querySelector('.footer')
 
 import { showReviewTotal, populateUser } from './utils'
 let isOpen: boolean
@@ -62,7 +64,7 @@ const properties : {
         code: number;
         country: string;
     };
-    contact: [number, string];
+    contact: [ number, string ];
     isAvailable: boolean;
 }[] = [
     {
@@ -75,7 +77,7 @@ const properties : {
             code: 45632,
             country: 'Colombia'
         },
-        contact: [+1123495082908, 'marywinkle@gmail.com'],
+        contact: [+112343823978921, 'marywinkle@gmail.com'],
         isAvailable: true  
     },
     {
@@ -88,7 +90,7 @@ const properties : {
             code: 343903,
             country: 'Poland'
         },
-        contact: [+1123495082908, 'garydavis@hotmail.com'],
+        contact: [+1298239028490830, 'garydavis@hotmail.com'],
         isAvailable: false 
     },
     {
@@ -101,7 +103,7 @@ const properties : {
             code: 35433,
             country: 'United Kingdom',
         },
-        contact: [ +1123495082908, 'andyluger@aol.com'],
+        contact: [+34829374892553, 'andyluger@aol.com'],
         isAvailable: true
     }
 ]
@@ -122,4 +124,10 @@ for (let i = 0; i < properties.length; i++) {
     card.appendChild(image)
     propertyContainer.appendChild(card)
 }
+
+// use your location, your current time, and the current temperature of your
+// location
+let currentLocation: [string, string, number] = ['Johannesburg', '16:29', 24]
+footer.innerHTML = currentLocation[0] + ' ' + currentLocation[1] + ' ' + currentLocation[2] + '°'
+
 
