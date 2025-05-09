@@ -1,5 +1,8 @@
+// Modules
 import { showReviewTotal, populateUser, showDetails, getTopTwoReviews} from './utils'
-import { Price, Country} from './types'
+import { Price, Country } from './types'
+import { Permissions , LoyaltyUser } from './enums'
+import  Review  from './interfaces'
 const propertyContainer = document.querySelector('.properties')
 const reviewContainer = document.querySelector('.reviews')
 const container = document.querySelector('.container')
@@ -8,21 +11,10 @@ const footer = document.querySelector('.footer')
 
 let isLoggedIn: boolean
 
-enum Permissions {
-    ADMIN = 'ADMIN', 
-    READ_ONLY = 'READ_ONLY'
-}
-
-enum LoyaltyUser {
-    GOLD_USER = 'GOLD_USER',
-    SILVER_USER = 'SILVER_USER',
-    BRONZE_USER = 'BRONZE_USER'
-}
-
 // Reviews
 const reviews: Review[] = [
     {
-        name: 'Sheia',
+        name: 'Sheila',
         stars: 5,
         loyaltyUser: LoyaltyUser.GOLD_USER,
         date: '01-04-2021'
@@ -123,7 +115,7 @@ for (let i = 0; i < properties.length; i++) {
 }
 
 let count = 0
-function addReviews(array: Review[]) : void {
+function addReviews(array : Review[]) : void {
     if (!count ) {
         count++
         const topTwo = getTopTwoReviews(array)
